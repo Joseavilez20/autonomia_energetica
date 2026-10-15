@@ -1,0 +1,144 @@
+```markdown
+# 05 — Hipótesis de Innovación Comprobable y Protocolos Experimentales
+
+> **Rigor Científico y Etiquetado Epistemológico:** Para distinguir hechos físicos comprobados de las fronteras de invención que exploraremos en tu taller, cada sección utiliza estrictamente las etiquetas: **[demostrado]**, **[estimación]**, **[hipótesis]** y **[pendiente de medición]**[cite: 1].
+
+Dado tu perfil (cocción actual con leña, desconexión eléctrica total, necesidad de alimentar nevera, bombeo, luces y router, y acceso a todas las herramientas), formulamos **cuatro hipótesis de alto impacto** inspiradas en desarrollos aeroespaciales, soviéticos y de termofísica avanzada, adaptadas a fabricación en taller propio[cite: 1].
+
+---
+
+## Hipótesis 1: Cogeneración Termoeléctrica-Hidráulica en Estufa de Leña Rocket con Enfriamiento por Termosifón Pasivo (Inspiración: Generadores Soviéticos Ioffe + Termofísica de Lazo Cerrado)
+
+### 1. Problema que resuelve y mecanismo físico esperado
+* **Problema:** En días de tormenta continua (cuando la generación solar cae al $10\text{--}15\%$), la vivienda pierde energía pero tú sigues encendiendo el fogón de leña de $2\text{ a }4\text{ horas}$ al día para cocinar. En un fogón convencional, un flujo térmico de $5,000\text{ a }10,000\text{ W}$ escapa por las paredes de la cámara de combustión y la chimenea sin producir trabajo eléctrico.
+* **Mecanismo físico:** El **Efecto Seebeck** genera una fuerza electromotriz ($V = \alpha \cdot \Delta T$) cuando existe un gradiente de temperatura entre las dos caras de un módulo semiconductor ($\text{Bi}_2\text{Te}_3$). El fracaso habitual de los experimentos caseros con celdas Peltier/TEG ocurre porque el disipador de aluminio se calienta rápidamente, reduciendo $\Delta T$ a casi cero, o porque usan ventiladores y bombas eléctricas que consumen la mitad de lo generado. **Nuestra innovación:** Acoplar en la pared externa de una cámara de combustión aislada (*Rocket Stove*) un colector de cobre refrigerado por agua en **circulación natural por termosifón (sin bomba eléctrica)**. El agua fría entra por abajo desde un tanque elevado, mantiene la cara fría a $\le 35\text{--}45^\circ\text{C}$ por convección natural ascendente mientras la cara caliente se regula mecánicamente mediante una placa difusora de hierro/aluminio a $190\text{--}220^\circ\text{C}$, entregando **simultáneamente electricidad DC para el router/luces y $80\text{ L}$ de agua caliente sanitaria gratis**.
+
+### 2. Respaldo científico vs. Inferencia nueva
+* **[demostrado]:** Un módulo TEG comercial de bismuto-telururo (como el TEG1-12611-6.0 o en su versión económica las celdas TEC1-12706 seleccionadas para alta temperatura $<200^\circ\text{C}$) genera entre $3.5\text{ W}$ y $7.5\text{ W}$ eléctricos por módulo cuando se somete a $\Delta T = 150^\circ\text{C}$ con carga acoplada a su resistencia interna ($R_{\text{carga}} = R_{\text{interna}}$).
+* **[hipótesis]:** Un bloque colector de aluminio rectificado en taller con 16 módulos en arreglo serie-paralelo ($4\text{S}4\text{P}$) adosado al cañón secundario de tu estufa de leña y enfriado exclusivamente por un lazo de termosifón gravitacional hacia un tambor de $100\text{ L}$ logrará sostener un $\Delta T \ge 135^\circ\text{C}$ durante $120\text{ minutos}$ continuos sin gastar $1\text{ W}$ en bombas auxiliares, evitando la fusión de las celdas mediante una lámina fusible o entrehierro bimetálico de desacoplo a $210^\circ\text{C}$.
+
+### 3. Predicción cuantitativa, condiciones y margen de incertidumbre
+* **[estimación]:** Con $T_{\text{placa caliente}} = 195 \pm 10^\circ\text{C}$ y $T_{\text{agua entrada}} = 25 \pm 5^\circ\text{C}$:
+  * **Potencia eléctrica neta entregada al banco de baterías (tras convertidor DC-DC MPPT):** **$45\text{ W a }75\text{ W}$ continuos** con 16 módulos TEG de grafito (o **$18\text{ W a }28\text{ W}$** si se hace la prueba inicial con 16 celdas económicas TEC1-12706 operando a máx. $165^\circ\text{C}$).
+  * **Potencia térmica transferida al agua del tanque:** **$1,100\text{ W a }1,600\text{ W}$ térmicos** (calienta $60\text{ L}$ de agua desde $20^\circ\text{C}$ hasta $55^\circ\text{C}$ en $1.5\text{ h}$).
+  * **Incertidumbre:** $\pm 22\%$ (dominada por la resistencia térmica de contacto en la interfaz metal-cerámica y el ensuciamiento por hollín interno).
+
+### 4. Experimento mínimo (Escala de banco: 2 celdas), materiales, instrumentación y variable de control
+* **Materiales del prototipo mínimo:** 2 celdas TEC1-12706 (para prueba de bajo costo, máx. $160^\circ\text{C}$) o 2 módulos TEG SP1848-27145, 1 placa de aluminio de $10\text{ mm}$ de espesor (amortiguador térmico), 1 bloque de enfriamiento por agua de aluminio o cajetín soldado en cobre de $80\times 40\text{ mm}$, pasta térmica de óxido de zinc/plata de alta conductividad, 2 mangueras conectadas a un bidón de $20\text{ L}$ situado $80\text{ cm}$ más arriba (termosifón), y una resistencia variable (reóstato de alambre de nicromo de $1\text{ a }20\text{ }\Omega$).
+* **Instrumentación:** Termopar Tipo K insertado en un agujero de $2\text{ mm}$ dentro de la placa caliente (a $1\text{ mm}$ de la celda), termómetro en la entrada y salida de agua, voltímetro y amperímetro DC **[pendiente de medición]**.
+* **Variable independiente / de control:** Temperatura de la placa amortiguadora caliente ($T_h$, controlada entre $100^\circ\text{C}$ y $175^\circ\text{C}$) y resistencia de carga ($R_L$).
+
+### 5. Criterio de validación vs. refutación
+* **Resultado que apoya la hipótesis:** El flujo por termosifón inicia espontáneamente en menos de $90\text{ segundos}$ tras aplicar calor, manteniendo la cara fría por debajo de $55^\circ\text{C}$ sin bomba eléctrica, y cada celda entrega de forma sostenida $\ge 1.5\text{ W}$ (en TEC1-12706) o $\ge 4.2\text{ W}$ (en TEG de alta temperatura) durante $60\text{ minutos}$ sin degradar su resistencia interna.
+* **Resultado que la refuta:** Se forman bolsas de vapor (*vapor lock*) en el bloque enfriador que detienen el termosifón, disparando la cara fría a $>100^\circ\text{C}$ y cayendo la potencia eléctrica a $<0.4\text{ W}$ por celda.
+
+### 6. Posibles errores, energía no contabilizada y explicaciones alternativas
+* **Error de medición común:** Medir el voltaje en vacío ($V_{oc}$), ver $8\text{ V}$, medir luego la corriente en cortocircuito ($I_{sc}$), ver $1.5\text{ A}$, y asumir erróneamente que la celda da $8 \times 1.5 = 12\text{ W}$. Por el **Teorema de Máxima Transferencia de Potencia**, la potencia máxima real de un generador termoeléctrico lineal es exactamente **una cuarta parte** de ese producto:
+  $$P_{\max} = \frac{V_{oc} \cdot I_{sc}}{4}$$
+* **Presión de apriete:** Si los tornillos de sujeción no aplican entre $100\text{ y }150\text{ PSI}$ uniformes (usando arandelas elásticas Belleville fuera de la zona de calor), una bolsa de aire microscópica reducirá la potencia a la tercera parte. Además, los tornillos de acero que unen la placa caliente con la fría forman un **puente térmico parasitario** si no se aíslan con bujes de fibra de vidrio o mica.
+
+### 7. Costo y tiempo máximos de parada (*Kill-Switch*)
+* **Presupuesto Fase 1 de la prueba:** **$25 a $45 USD** (bloque de 2 a 4 celdas).
+* **Tiempo máximo en taller:** **12 horas** de montaje y prueba. Si tras ajustar la purga de aire del termosifón y la presión de apriete no se obtiene al menos $1.2\text{ W}$ reales por celda económica sobre una resistencia física, se descarta escalar a 16 celdas y se redirige el calor del fogón al Motor Termoacústico/Stirling (Hipótesis 4).
+
+---
+
+## Hipótesis 2: Panel Híbrido Fotovoltaico-Térmico (PVT) con Película Hidráulica Trasera y Concentración Estacionaria Reflectiva (Inspiración: Tsinghua University / NREL)
+
+### 1. Problema que resuelve y mecanismo físico esperado
+* **Problema:** Bajo el sol del mediodía, un panel solar negro alcanza $60\text{--}70^\circ\text{C}$. Como el silicio pierde $\sim 0.40\%$ de potencia por cada grado por encima de $25^\circ\text{C}$, pierdes casi el $18\%$ de la capacidad del panel justo cuando más sol hay.
+* **Mecanismo físico:** Al adherir en la cara posterior del panel solar un serpentín plano de aluminio/cobre o policarbonato alveolar por el que circula el agua que tu bomba ya debe subir de todos modos al tanque doméstico, extraes el calor de la celda manteniéndola a $\sim 30^\circ\text{C}$. Como el panel ahora está refrigerado activamente por el flujo de agua, podemos colocarle **dos alas reflectoras planas laterales (espejos o lámina de aluminio pulido a $120^\circ$, concentrador tipo V-Trough de factor $1.4\times$)** sin quemar el panel, aumentando la corriente fotogenerada mucho más allá de su potencia nominal de fábrica.
+
+### 2. Respaldo científico vs. Inferencia nueva
+* **[demostrado]:** El coeficiente térmico negativo del silicio ($\gamma \approx -0.35\%\text{ a }-0.45\%/^\circ\text{C}$) y el aumento lineal de la corriente de cortocircuito ($I_{sc}$) con la irradiancia incidente están universalmente comprobados.
+* **[hipótesis]:** Un panel solar estándar acoplado en taller a un intercambiador trasero de lámina + espuma de poliuretano y dos alas reflectoras planas a $60^\circ$ de apertura producirá entre un **$25\%$ y un $35\%$ más de energía eléctrica diaria ($\text{Wh/día}$)** que un panel idéntico testigo sin modificar, entregando además agua precalentada a $38\text{--}45^\circ\text{C}$.
+
+### 3. Predicción cuantitativa, condiciones y margen de incertidumbre
+* **[estimación]:** En un día despejado ($5.0\text{ HSP}$), comparando dos paneles idénticos de $100\text{ Wp}$ lado a lado:
+  * Panel testigo (sin modificar): $410\text{ Wh/día}$ eléctricos ($T_{\text{celda máx}} = 62^\circ\text{C}$).
+  * Panel PVT + Reflectores (Hipótesis 2): **$530\text{ a }560\text{ Wh/día}$ eléctricos** ($+30\%$) + **$1,200\text{ Wh/día}$ térmicos** en el agua ($T_{\text{celda máx}} = 34^\circ\text{C}$).
+  * **Incertidumbre:** $\pm 10\%$ (según uniformidad de la reflexión sobre todas las celdas en serie; si una sola celda del panel queda sin reflejo, limita la corriente de toda la rama).
+
+### 4. Experimento mínimo, materiales, instrumentación y variable de control
+* **Materiales:** 2 paneles solares pequeños idénticos (ej. $20\text{ Wp}$ o $50\text{ Wp}$ para hacer la prueba controlada par-a-par), tubo de cobre aplastado o placa de policarbonato alveolar pegada con silicona térmica/acrílica al reverso de uno de los paneles, 2 tableros forrados con Mylar reflectivo o lámina de aluminio espejo, y dos cargas resistivas o medidores PZEM-017 gemelos **[pendiente de medición]**.
+* **Variable de control:** Caudal de agua refrigerante ($0.5\text{ a }2.0\text{ L/min}$ por gravedad desde la toma de agua) y ángulo de los reflectores laterales.
+
+### 5. Criterio de validación vs. refutación
+* **Apoya la hipótesis:** El panel modificado supera en $\ge 22\%$ los $\text{Wh}$ acumulados al final del día respecto al panel testigo colocado exactamente al mismo ángulo de inclinación.
+* **Refuta la hipótesis:** La ganancia neta (descontando cualquier bombeo si no fuera por gravedad) es $<10\%$, o los reflectores generan puntos calientes (*hot-spots*) localizados por iluminación no uniforme medidas con termómetro/cámara IR.
+
+### 6. Posibles errores y explicaciones alternativas
+* **Asimetría óptica:** Si el reflector proyecta luz solo sobre la mitad del panel, los diodos de *bypass* se activarán o las celdas menos iluminadas limitarán la corriente total. Los espejos laterales deben tener una longitud que cubra el $100\%$ de la cara del panel entre las $09:30$ y las $14:30$.
+* **Tolerancia de fábrica:** Dos paneles nuevos de la misma caja pueden diferir un $3\%$ de fábrica. Antes de modificar uno, mide ambos al sol durante $2\text{ horas}$ sin modificaciones para registrar su factor de calibración cruzada inicial.
+
+### 7. Costo y tiempo máximos de parada
+* **Costo incremental de modificación:** **$30 a $60 USD** por panel.
+* **Tiempo máximo:** **8 horas** de taller + **2 días** de registro comparativo.
+
+---
+
+## Hipótesis 3: Almacenamiento Frigorífico por Cambio de Fase (PCM Eutéctico Casero) + Sub-enfriamiento Nocturno Radiativo para Nevera *Zero-Battery-Night*
+
+### 1. Problema que resuelve y mecanismo físico esperado
+* **Problema:** En tu lista de cargas críticas, **la nevera es el mayor consumidor individual ($960\text{ Wh/día}$)** y el más destructivo para las baterías porque arranca toda la noche y exige picos inductivos de arranque ($600\text{--}800\text{ W}$).
+* **Mecanismo físico:** El calor latente de fusión del agua/salmuera ($L_f \approx 334\text{ kJ/kg} \approx 92.7\text{ Wh/kg}$ térmicos) es **80 veces mayor** que su capacidad de almacenar frío subiendo $1^\circ\text{C}$ en estado líquido ($1.16\text{ Wh/kg}$). Si colocamos en el compartimento superior/congelador de la nevera paquetes sellados de **solución eutéctica de cloruro de sodio o cloruro de potasio calibrada para congelarse a $-5^\circ\text{C}$ / $-10^\circ\text{C}$** y programamos un doble termostato para que el compresor trabaje intensamente **solo de 10:00 a 16:00** (cuando sobra energía solar directa), podemos **apagar eléctricamente la nevera durante las 14 horas de oscuridad ($18:00\text{ a }08:00$)** manteniendo los alimentos entre $2^\circ\text{C}$ y $5^\circ\text{C}$. Adicionalmente, haciendo circular agua durante la madrugada por un serpentín en el techo pintado de blanco de dióxido de titanio/sulfato de bario (que emite radiación infrarroja en la banda de $8\text{--}13\text{ }\mu\text{m}$ hacia el espacio exterior) para enfriar el condensador trasero de la nevera durante el día, reducimos la presión de descarga del compresor y su consumo eléctrico en un $20\text{--}25\%$.
+
+### 2. Respaldo científico vs. Inferencia nueva
+* **[demostrado]:** Un compresor frigorífico aumenta su Coeficiente de Desempeño ($\text{COP} = Q_{\text{frío}} / W_{\text{eléctrico}}$) en un $\sim 3\%$ por cada $1^\circ\text{C}$ que se reduzca la temperatura de su condensador exterior. Asimismo, la entalpía de fusión de las salmueras eutécticas está tabulada con exactitud termodinámica.
+* **[hipótesis]:** Con $6\text{ kg}$ de acumuladores eutécticos caseros (agua + sal en proporción específica dentro de envases planos de polietileno de alta densidad HDPE) y una chaqueta externa de aislamiento adicional de $5\text{ cm}$ de poliuretano/poliestireno extruido (XPS) pegada a los laterales de una nevera convencional, el consumo nocturno desde las baterías caerá a **$0\text{ Wh}$** sin que la temperatura interna supere los $5.0^\circ\text{C}$ al amanecer.
+
+### 3. Predicción cuantitativa, condiciones y margen de incertidumbre
+* **[estimación]:**
+  * Capacidad térmica latente de $6\text{ kg}$ de mezcla eutéctica: $6 \times 85\text{ Wh/kg} \approx 510\text{ Wh}$ térmicos de absorción de frío.
+  * Con un $\text{COP}$ medio de $2.2$, esos $510\text{ Wh}$ térmicos equivalen a desplazar **$230\text{ Wh}$ eléctricos nocturnos** hacia el mediodía solar.
+  * El aislamiento extra ($+5\text{ cm}$ XPS) reduce la infiltración de calor por las paredes en un **$35\%$**, bajando el consumo total diario de la nevera de $960\text{ Wh/día}$ a **$580\text{ Wh/día}$ ($100\%$ diurnos)**.
+  * **Incertidumbre:** $\pm 15\%$ según el número de aperturas de puerta durante la noche.
+
+### 4. Experimento mínimo, materiales, instrumentación y variable de control
+* **Materiales:** 6 botellas planas o bolsas gruesas selladas con mezcla de agua + sal de cocina ($\text{NaCl}$ al $5\text{--}10\%$ en peso para punto de fusión entre $-3^\circ\text{C}$ y $-6^\circ\text{C}$, más una pizca de bórax o goma xantana como agente nucleante/espesante), láminas de espuma aislante rígida XPS de $5\text{ cm}$ para forrar exteriormente las paredes laterales y superior de la nevera (sin tapar la parrilla negra trasera, la cual por el contrario debe ventilarse o enfriarse con agua), un temporizador horario y un vatímetro AC/DC **[pendiente de medición]**.
+* **Variable de control:** Masa del acumulador de cambio de fase ($0\text{ kg}$ vs. $6\text{ kg}$) y espesor de aislamiento adicional.
+
+### 5. Criterio de validación vs. refutación
+* **Apoya la hipótesis:** Al desconectar la nevera a las $18:00$ con los paquetes eutécticos congelados, a las $07:00$ del día siguiente el sensor de temperatura en el estante medio marca $\le 5.0^\circ\text{C}$ y el consumo total de 24 horas cae al menos un $25\%$.
+* **Refuta la hipótesis:** La temperatura interna sube por encima de $7.0^\circ\text{C}$ antes de las $06:00$ o el trabajo extra del compresor al mediodía consume más energía que el ahorro obtenido por aislamiento.
+
+### 6. Posibles errores y explicaciones alternativas
+* **Error fatal de montaje:** En muchas neveras modernas, el condensador (el tubo caliente) no es una rejilla externa en la espalda, sino que está **pegado por dentro de las chapas laterales de la nevera** (si tocas los lados de la nevera cuando funciona y están calientes, es de pared caliente). Si forras con aislante una pared lateral que actúa como disipador de calor, **ahogarás el condensador y duplicarás el consumo eléctrico**. Verifica con la mano o termómetro dónde disipa calor antes de pegar el aislante; solo se aíslan las caras frías o se instala un condensador externo ventilado.
+
+### 7. Costo y tiempo máximos de parada
+* **Costo:** **$20 a $40 USD** (planchas de XPS, sal y termostato digital W1209/STC-1000).
+* **Tiempo máximo:** **4 horas** de instalación + **48 horas** de medición comparativa (24 h antes y 24 h después).
+
+---
+
+## Hipótesis 4: Generador Termoacústico — Stirling de Diafragma Metálico sin Fricción para Leña o Concentrador Solar (Inspiración: NASA Glenn Research Center / Los Alamos National Lab)
+
+### 1. Problema que resuelve y mecanismo físico esperado
+* **Problema:** Los motores Stirling tradicionales con pistones mecánicos y bielas construidos en talleres caseros suelen fallar a las pocas semanas por fugas de presión en los sellos dinámicos o por fricción excesiva, y los módulos Peltier (Hipótesis 1) están limitados a $\sim 4\%$ de eficiencia y se funden si superan los $220^\circ\text{C}$. Tu fuego de leña entrega temperaturas de **$600^\circ\text{C}$ a $800^\circ\text{C}$**.
+* **Mecanismo físico:** En un **Motor Termoacústico de Onda Viajera (Traveling-Wave Thermoacoustic Engine)** acoplado a un alternador lineal de diafragma o fuelle metálico (tecnología desarrollada por Swift en Los Álamos y la NASA), **no existen pistones rozando cilindros ni bielas**. Un tubo de acero inoxidable cerrado contiene aire o helio a presión moderada ($3\text{--}6\text{ bar}$) y un **regenerador poroso** (mallas apiladas de acero inoxidable #100-#200 o lana de acero fina) situado entre un intercambiador caliente (en el fuego de leña a $550^\circ\text{C}$) y un intercambiador frío (camisa de agua a $25^\circ\text{C}$). El fuerte gradiente térmico a través del regenerador excita espontáneamente una onda acústica de presión de alta amplitud ($60\text{--}100\text{ Hz}$) que hace vibrar un diafragma flexible con un imán de neodimio dentro de una bobina de cobre, generando corriente alterna directamente sin desgaste mecánico.
+
+### 2. Respaldo científico vs. Inferencia nueva
+* **[demostrado]:** Los motores termoacústicos con lazo de retroalimentación (*looped tube* o configuración *Backhaus-Swift*) convierten calor de alta temperatura en potencia acústica con eficiencias del $20\text{--}30\%$, y el acoplamiento a alternadores lineales sin contacto tiene una vida útil superior a $40,000\text{ horas}$.
+* **[hipótesis]:** Un resonador termoacústico construido en taller con tubería de acero inoxidable Schedule 40 de $1.5\text{''}$ a $2\text{''}$, un regenerador de discos de malla de acero inoxidable cortados con sacabocados, presurizado con aire seco a $4\text{ bar}$ mediante una válvula de neumático y acoplado a un diafragma metálico con imán N52 y bobina captadora, generará entre **$30\text{ W}$ y $100\text{ W}$ eléctricos continuos** directamente de las brasas del fogón de leña sin ninguna pieza rotativa ni lubricación.
+
+### 3. Predicción cuantitativa, condiciones y margen de incertidumbre
+* **[estimación]:**
+  * Temperatura de inicio de oscilación (*onset temperature*): $T_{\text{caliente}} \approx 320^\circ\text{C}$ con $T_{\text{agua fría}} = 25^\circ\text{C}$.
+  *En régimen de brasas a $550^\circ\text{C}$ y presión media de $4\text{ bar}$: Frecuencia de resonancia $f \approx 65\text{--}85\text{ Hz}$, amplitud de presión dinámica $\Delta P \approx 0.35\text{ bar}$, potencia eléctrica sobre carga acoplada (con capacitor en serie para cancelar la inductancia de la bobina): **$35\text{ W a }85\text{ W}$**.
+  * **Incertidumbre:** $\pm 35\%$ (muy sensible al ajuste de impedancia acústico-mecánica entre el gas y la masa del imán/diafragma).
+
+### 4. Experimento mínimo (Demostrador de Fase 1), materiales e instrumentación
+* **Materiales del prototipo inicial:** Un tubo de ensayo de cuarzo o tubo ciego de acero inoxidable de paredes delgadas ($\varnothing 25\text{--}38\text{ mm}$), un taco de malla fina de acero inoxidable o esponjilla metálica compactada de $35\text{ mm}$ de longitud como regenerador (*stack*), una camisa de cobre soldada con plata enfriada por agua justo debajo del regenerador, y en el extremo frío un diafragma de caucho nitrílico reforzado o lámina de bronce fosforoso de $0.2\text{ mm}$ con un imán de neodimio de $20\times 10\text{ mm}$ oscilando frente a una bobina de $500$ espiras de alambre AWG 22.
+* **Instrumentación:** Termopar Tipo K hasta $800^\circ\text{C}$, manómetro en el puerto frío, osciloscopio o multímetro midiendo frecuencia ($\text{Hz}$) y tensión RMS sobre resistencia con capacitor de compensación en serie **[pendiente de medición]**.
+* **Variable de control:** Posición exacta del regenerador dentro del tubo y presión estática interna ($1\text{ bar}$ atmosférico vs. $2, 3\text{ y }4\text{ bar}$ inflados con bomba de bicicleta/compresor).
+
+### 5. Criterio de validación vs. refutación
+* **Apoya la hipótesis:** Al superar los $350^\circ\text{C}$ en la punta caliente, el tubo entra en resonancia autoexcitada (se escucha un zumbido grave potente y el diafragma vibra con una carrera de $2\text{ a }5\text{ mm}$), encendiendo de forma continua una carga resistiva de $\ge 10\text{ W}$ en el primer prototipo atmosférico y escalando linealmente al subir la presión a $4\text{ bar}$.
+* **Refuta la hipótesis:** La conducción térmica longitudinal por la pared del tubo de acero calienta el lado frío impidiendo el gradiente crítico ($\nabla T_{\text{crítico}}$), o el amortiguamiento magnético frena la onda acústica antes de extraer más de $2\text{ W}$.
+
+### 6. Posibles errores y explicaciones alternativas
+* **Espesor de pared del tubo caliente:** Si usas un tubo de hierro negro muy grueso en la zona del regenerador, el calor viajará por el metal directamente hacia el agua fría sin pasar por el aire interno. La sección que aloja el regenerador debe ser de **acero inoxidable 304/316 de pared delgada ($1.2\text{--}1.5\text{ mm}$)** porque el acero inoxidable tiene una conductividad térmica tres veces menor que el acero al carbono ($\sim 16\text{ W/(m}\cdot\text{K)}$ vs. $50\text{ W/(m}\cdot\text{K)}$), manteniendo el calor arriba y el frío abajo.
+
+### 7. Costo y tiempo máximos de parada
+* **Costo del prototipo en taller:** **$60 a $130 USD** (tubería inoxidable, soldadura de plata, imán N52 y alambre de bobinar).
+* **Tiempo máximo de banco:** **25 horas** de fabricación y ajuste acústico.
